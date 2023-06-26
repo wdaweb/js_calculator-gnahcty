@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+        integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=='
+        crossorigin='anonymous'>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            /* background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); */
+            background: url(./linear-vintage-vaporwave-background_52683-59619.avif)no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+
+            overflow: hidden;
+        }
+
+        #warning {
+            width: 315px;
+            height: 205px;
+            background-color: #d1c3ff;
+            box-sizing: border-box;
+            text-align: center;
+            border: 3px solid #d196cc;
+            position: absolute;
+            top: 28%;
+            left: 30%;
+            z-index: 1;
+            display: none;
+        }
+
+        #warningheader {
+            height: 20px;
+        }
+
+        #warningcontent {
+            width: 300px;
+            height: 175px;
+            background-color: #fff;
+            color: #d196cc;
+            box-sizing: border-box;
+            text-align: center;
+            border: 3px solid #d196cc;
+            margin: auto;
+            font-size: 1rem;
+        }
+
+        span {
+            display: block;
+            margin: 40px 25px;
+            font-weight: bold;
+        }
+
+        input[type=button] {
+            border: 3px solid #d196cc;
+            background-color: #fff;
+            color: #d196cc;
+            margin: 0 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        input[type=button]:hover {
+            background-color: #ddd;
+            color: #fff;
+        }
+
+        #div {
+            width: 620px;
+            height: 500px;
+            /* padding-top: 25px; */
+            background-color: #d1c3ff;
+            box-sizing: border-box;
+            text-align: center;
+            border: 3px solid #d196cc;
+            /* margin: 200px 0px 0px 300px; */
+            position: absolute;
+            top: 20%;
+            left: 25%;
+
+        }
+
+        #divheader {
+            height: 36px;
+            cursor: grab;
+        }
+
+        p {
+            float: left;
+            margin: 10px 0px 0px 10px;
+            line-height: 20px;
+            font-family: 'Edu SA Beginner', cursive;
+            font-weight: bold;
+        }
+
+        .box {
+            height: 20px;
+            width: 20px;
+            float: right;
+            line-height: 20px;
+            color: #d196cc;
+            background-color: #fff;
+            border: 3px solid #d196cc;
+            text-align: center;
+            margin: 5px 8px 5px 0px;
+            cursor: pointer;
+        }
+
+        /* i {
+            font-size: 1rem;
+        } */
+
+        #container {
+            clear: both;
+            width: 600px;
+            height: 450px;
+            background-color: #fff;
+            display: flex;
+            margin: auto;
+            /* justify-content: center;
+            align-items: center; */
+            border: 3px solid #d196cc;
+        }
+
+        table {
+            width: 245px;
+            height: 400px;
+            background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+            border-radius: 10px;
+            border: 3px solid #d196cc;
+            /* box-shadow: 0px 0px 2rem #daa1b1; */
+            overflow: hidden;
+            margin: 24px auto;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            vertical-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 5px;
+            font-size: 1.5rem;
+            transition: 0.1s;
+        }
+
+        #input {
+            text-align: right;
+            padding: 20px 15px 10px 0px;
+            font-size: 3rem;
+            background: transparent;
+            /* overflow-x: scroll; */
+            width: 220px;
+        }
+
+        td:not(#input):hover {
+            background-color: rgba(255, 255, 255, 0.5);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="warning" class="animate__bounceIn">
+        <div id="warningheader"></div>
+        <div id="warningcontent">
+            <span>ARE YOU SURE YOU <br> WANT TO QUIT ?</span>
+            <input type="button" value="YES" id="quit">
+            <input type="button" value="NO" id="dontQuit">
+        </div>
+    </div>
+
+    <div id="div">
+        <div id="divheader">
+            <p>C A L C U L A T O R . E X E</p>
+            <div class="box" id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="box" id="max">
+                <i class=" fa-solid fa-window-maximize"></i>
+            </div>
+            <div class="box" id="min">
+                <i class="fa-solid fa-window-minimize"></i>
+            </div>
+        </div>
+
+        <div id="container" class="animate__fadeInTopLeft">
+            <table>
+                <tr>
+                    <td colspan=" 4" id="input">0</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>/</td>
+                    <td>*</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td rowspan="2">+</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td rowspan="2">=</td>
+                </tr>
+                <tr>
+                    <td colspan="2">0</td>
+                    <td>.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</html>
+<script>
+    const text = document.getElementById("input")
+    const btns = document.querySelectorAll("td:not(#input)")
+    const div = document.getElementById("div")
+    const min = document.getElementById("min")
+    const max = document.getElementById("max")
+    const close = document.getElementById("close")
+    const container = document.getElementById("container")
+    const boxes = document.getElementsByClassName('box')
+    const table = document.querySelector('table')
+    const warning = document.getElementById('warning')
+    const quit = document.getElementById('quit')
+    const dontQuit = document.getElementById('dontQuit')
+    let fscrn = false
+    let mini = false
+
+
+    // 關閉視窗
+    close.addEventListener('click', function () {
+        warning.style.display = 'block'
+    })
+    quit.addEventListener('click', function () {
+        warning.style.display = 'none'
+        div.style.display = 'none'
+    })
+    dontQuit.addEventListener('click', () => {
+        warning.style.display = 'none'
+    })
+
+
+
+    //最大化&還原
+    max.addEventListener('click', function () {
+        if (fscrn == false && mini == false) {
+            fscrn = true
+            div.style.height = '100%'
+            div.style.width = '100%'
+            div.style.top = '0%'
+            div.style.left = '0%'
+            container.style.height = '95%'
+            container.style.width = '99%'
+            table.style.margin = '250px auto'
+        } else {
+            fscrn = false
+            div.style.width = '620px'
+            div.style.height = '500px'
+            container.style.display = 'block'
+            div.style.top = '20%'
+            div.style.left = '25%'
+            container.style.height = '450px'
+            container.style.width = '600px'
+            table.style.margin = '24px auto';
+
+            min.style.display = 'block'
+        }
+        mini = false
+    })
+
+    // 最小化
+    min.addEventListener('click', function () {
+        min.style.display = 'none'
+        div.style.height = '36px'
+        div.style.width = '300px'
+        container.style.display = 'none'
+        mini = true
+    })
+
+
+    //計算機功能
+    for (const btn of btns) {
+        btn.addEventListener('click', () => {
+            const btnText = btn.innerText
+            const operators = ['+', '-', '*', '/']
+            const lastText = text.innerText[text.innerText.length - 1]
+            // 如果按的鍵是 =
+            if (btnText === '=') {
+                // 如果最後一個字不是運算子，才計算
+                if (!operators.includes(lastText)) {
+                    text.innerText = eval(text.innerText)
+                }
+            }
+            // 如果按 C，歸 0
+            else if (btnText === 'C') {
+                text.innerText = '0'
+            }
+            // 如果現在是 0，按的是數字，把文字取代
+            else if (text.innerText === '0' && !isNaN(parseInt(btnText))) {
+                text.innerText = btnText
+            }
+            // 如果最後一個字是運算子
+            else if (operators.includes(lastText)) {
+                // 現在按的不是運算子，才加上去
+                if (!operators.includes(btnText)) {
+                    text.innerText += btnText
+                }
+            }
+            // 如果最後一個字不是運算子，加上去
+            else {
+                text.innerText += btnText
+            }
+        })
+    }
+
+    //keydown
+    document.addEventListener('keydown', event => {
+        const btnText = event.key
+        const operators = ['+', '-', '*', '/']
+        const lastText = text.innerText[text.innerText.length - 1]
+        // 如果按的鍵是 =
+        if (btnText === '=' || btnText === 'Enter') {
+            // 如果最後一個字不是運算子，才計算
+            if (!operators.includes(lastText)) {
+                text.innerText = eval(text.innerText)
+            }
+        }
+        // 如果按 C，歸 0
+        else if (btnText === 'c') {
+            text.innerText = '0'
+        }
+        // 如果現在是 0，按的是數字，把文字取代
+        else if (text.innerText === '0' && !isNaN(parseInt(btnText))) {
+            text.innerText = btnText
+        }
+        // 如果最後一個字是運算子
+        else if (operators.includes(lastText)) {
+            // 現在按的不是運算子，且是數字才加上去
+            if (!operators.includes(btnText) && !isNaN(parseInt(btnText))) {
+                text.innerText += btnText
+            }
+        }
+        // 如果最後一個字不是運算子，且按的是數字或運算子，加上去
+        else if (!isNaN(parseInt(btnText)) || operators.includes(btnText)) {
+            text.innerText += btnText
+        }
+    })
+
+
+    dragElement(div);
+    dragElement(warning);
+
+    function dragElement(el) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(el.id + "header")) {
+            /* if present, the header is where you move the DIV from:*/
+            document.getElementById(el.id + "header").onmousedown = dragMouseDown;
+        } else {
+            /* otherwise, move the DIV from anywhere inside the DIV:*/
+            el.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            el.style.top = (el.offsetTop - pos2) + "px";
+            el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            /* stop moving when mouse button is released:*/
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+</script>
+</body>
+
+</html>
